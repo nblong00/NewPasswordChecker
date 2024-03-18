@@ -17,12 +17,16 @@ namespace NewPasswordChecker
             bool passwordHasUppercaseLetter = password.Any(char.IsUpper);
             bool passwordCheckerUppercaseLetter = passwordHasUppercaseLetter == true;
 
-            // Logic to log if entered password DOES NOT have special character
+            // Logic to log if entered password has number
+            bool passwordHasNumber = password.Any(char.IsDigit);
+            bool passwordCheckerNumber = passwordHasNumber == true;
+
+            // Logic to log if entered password has special character
             bool passwordHasSpecialCharacters = password.Any(ch => !Char.IsLetterOrDigit(ch));
-            bool passwordCheckerSpecialCharacter = passwordHasSpecialCharacters != true;
+            bool passwordCheckerSpecialCharacter = passwordHasSpecialCharacters == true;
 
             // Confirming that password is successful (no special characters and atleast one uppercase)
-            bool successfulPassword = passwordCheckerSpecialCharacter && passwordCheckerUppercaseLetter;
+            bool successfulPassword = passwordCheckerSpecialCharacter && passwordCheckerUppercaseLetter && passwordCheckerNumber;
 
             // Console shows that entered password meets requirements
             Console.WriteLine(successfulPassword);

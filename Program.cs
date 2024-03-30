@@ -13,7 +13,11 @@ namespace NewPasswordChecker
             // User enters custom password
             string password = Console.ReadLine();
 
+            // Calling main logic method to check password aganist requirements
             PassworCheckerLogic(password);
+
+            // Asks user if they want to check a new password
+            PlayerContinue();
 
             // Waiting for user input to close program
             Console.ReadKey();
@@ -38,6 +42,43 @@ namespace NewPasswordChecker
 
             // Console shows that entered password meets requirements
             Console.WriteLine(successfulPassword);
+        }
+
+        static void PlayerContinue(bool playerContinue = false)
+        {
+            Console.WriteLine("Would you like the check another password?: ");
+
+            // Logic to check if player wants to perform another calculation. 
+            // Forces user to provide expected answer or go through the loop again
+            while (!playerContinue)
+            {
+                // Variable to hold user's answer
+                string anotherCaclulation = Console.ReadLine();
+                switch (anotherCaclulation)
+                {
+                    case "yes":
+                        playerContinue = true;
+
+                        break;
+                    case "ye":
+                        playerContinue = true;
+                        break;
+                    case "y":
+                        playerContinue = true;
+                        break;
+                    case "no":
+                        Console.WriteLine("So be it.");
+                        playerContinue = true;
+                        break;
+                    case "n":
+                        Console.WriteLine("So be it.");
+                        playerContinue = true;
+                        break;
+                    default:
+                        Console.WriteLine("No valid answer provided. Type 'yes' or 'no' to continue.");
+                        break;
+                }
+            }
         }
     }
 }

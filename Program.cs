@@ -13,16 +13,24 @@ namespace NewPasswordChecker
             // User enters custom password
             string password = Console.ReadLine();
 
+            PassworCheckerLogic(password);
+
+            // Waiting for user input to close program
+            Console.ReadKey();
+        }
+
+        static void PassworCheckerLogic(string userPassword)
+        {
             // Logic to log if entered password has uppercase letter
-            bool passwordHasUppercaseLetter = password.Any(char.IsUpper);
+            bool passwordHasUppercaseLetter = userPassword.Any(char.IsUpper);
             bool passwordCheckerUppercaseLetter = passwordHasUppercaseLetter == true;
 
             // Logic to log if entered password has number
-            bool passwordHasNumber = password.Any(char.IsDigit);
+            bool passwordHasNumber = userPassword.Any(char.IsDigit);
             bool passwordCheckerNumber = passwordHasNumber == true;
 
             // Logic to log if entered password has special character
-            bool passwordHasSpecialCharacters = password.Any(ch => !Char.IsLetterOrDigit(ch));
+            bool passwordHasSpecialCharacters = userPassword.Any(ch => !Char.IsLetterOrDigit(ch));
             bool passwordCheckerSpecialCharacter = passwordHasSpecialCharacters == true;
 
             // Confirming that password is successful (no special characters and atleast one uppercase)
@@ -30,9 +38,6 @@ namespace NewPasswordChecker
 
             // Console shows that entered password meets requirements
             Console.WriteLine(successfulPassword);
-
-            // Waiting for user input to close program
-            Console.ReadKey();
         }
     }
 }
